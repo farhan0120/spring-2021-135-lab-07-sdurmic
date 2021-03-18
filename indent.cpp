@@ -20,17 +20,16 @@ int countChar(string line, char c)
 int add_indentations()
 {
     string line;
-    int tabs = 0;
+    int count = 0;
     while(getline(cin, line))
     {
-        line = removeLeadingSpaces(line);
-        tabs -= countChar(line,'}');
-        for(int i = 0; i < tabs; i++)
+        for(int i = 0; i < count; ++i)
         {
             cout << '\t';
         }
-        cout << line << endl;
-        tabs += countChar(line, '{');
+        cout << removeLeadingSpaces(line) << endl;
+        count += countChar(line,'{');
+        count -= countChar(line,'}');
     }
     return 0;
 }
